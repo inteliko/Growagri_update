@@ -1,0 +1,202 @@
+.hero_container{
+    position: relative;
+    height: 60vh;
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    background-position: center;
+  }
+  .leaf_image{
+  width: 100px;
+  height: 100px;
+  }
+
+
+  /* Default styles */
+.signup_content_area {
+  position: relative;
+}
+
+.signup_image_container {
+  position: relative;
+  height: 100%;
+  background-image: url('../images/bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+.signup_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  height: 100%;
+}
+
+.signup_content_heading_text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #06C96B;
+}
+
+.signup_content_text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.signup_form_container {
+  background-color: #F2F2F2;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+  .signup_image_container,
+  .signup_form_container {
+      width: 100%;
+  }
+  .signup_content{
+      width: 100%;
+      position: relative;
+  }
+
+  .signup_form_container {
+      margin-top: 20px;
+  }
+}
+
+
+
+/* header style start */
+.logo_text{
+  color: #0c0c0c;
+  text-decoration: none;
+  font-size: 50px;
+}
+
+.link_item{
+  color: #000000 !important;
+  font-size: 25px;
+  font-weight: 500;
+}
+/* header style  end*/
+
+/* footer style start */
+.footer_container{
+  background-color: #212830;
+  /* position: absolute;
+  bottom: 0;
+  width: 100%; */
+}
+.footer_menu_header{
+  color: #06C96B;
+  font-size: 30px;
+  font-weight: 600;
+}
+.footer_link{
+  color: rgb(250, 250, 250);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+
+}
+
+
+.footer_menu_header p {
+    color: white;
+}
+/* footer style end */
+
+/* common style*/
+.custom_button{
+  background-color: #06C96B;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid #06C96B;
+  transition: 0.3s;
+}
+.custom_button:hover{
+  background-color: transparent;
+  border: 1px solid #06C96B;
+  color: black;
+}
+
+.text_color{
+  color: #06C96B;
+}
+
+.gray_bg {
+  background-color: #f7fbf9;
+  border-radius: 10px;
+  box-shadow: 0 0 2px rgba(79, 255, 103, 0.2); /* Adjust shadow color and blur as needed */
+}
+
+/* Custom CSS for adjusting layout */
+.about-section {
+  padding: 50px 0;
+}
+.about-image {
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  object-fit: cover; /* Ensure image covers the entire container */
+  padding: 10%;
+}
+.center-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh; /* Adjust the height to center vertically */
+}
+.mission-vision {
+  margin-top: 50px; /* Adjust margin as needed */
+}
+
+
+.card {
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+.nav-tabs-custom .nav-item .nav-link.active {
+  color: #6c6ff5;
+}
+.nav-tabs-custom .nav-item .nav-link {
+  border: none;
+}
+.text-muted {
+  color: #8ca3bd!important;
+}
+.nav-tabs-custom .nav-item {
+  position: relative;
+  color: #271050;
+}
+.nav-tabs-custom .nav-item .nav-link.active:after {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.nav-tabs-custom .nav-item .nav-link::after {
+  content: "";
+  background: #6c6ff5;
+  height: 2px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+  -webkit-transition: all 250ms ease 0s;
+  transition: all 250ms ease 0s;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.w-100 {
+  width: 100% !important;
+  height: 75vh;
+}

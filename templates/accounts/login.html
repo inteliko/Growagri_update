@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+
+   <!-- signup content start-->
+   <div class="container my-5 signup_content_area">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="signup_image_container">
+                <div class="signup_content">
+                    <h2 class="signup_content_heading_text">Let’s be a <br> digital farmer,<br> today!</h2>
+                    <p class="signup_content_text">We are your trusted digital <br> agriculture funding platform</p>
+                </div>
+            </div>
+        </div>            
+
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="custom_button">Sign In</button>
+                    </form>
+                </div>
+
+                <p class="text-center mt-4"> Become a funder today <a href="{% url 'login' %}"> Sign Up</a></p>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+{% endblock content %}

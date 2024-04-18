@@ -1,0 +1,71 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+
+<!-- signup content start-->
+<div class="container my-5 signup_content_area">
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="signup_image_container">
+                <div class="signup_content">
+                    <h2 class="signup_content_heading_text">Let’s be a <br> digital farmer,<br> today!</h2>
+                    <p class="signup_content_text">We are your trusted digital <br> agriculture funding platform</p>
+                </div>
+            </div>
+        </div>            
+        
+        <div class="col-lg-6 col-md-12">
+            {% include 'includes/alerts.html' %}
+            <div class="signup_form_container p-4 rounded">
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_first_name" class="form-label">First Name</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_last_name" class="form-label">Last Name</label>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_phone_number" class="form-label">Phone Number</label>
+                        {{ form.phone_number }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Create Password</label>
+                        <input type="password" class="form-control" id="id_password" name="password" placeholder="Enter Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_confirm_password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="id_confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                    </div>
+                    {{ form.email.errors }}
+                    {{ form.non_field_errors }}
+                    <button type="submit" class="custom_button">Sign Up</button>
+                </form>
+            </div>
+            <p class="text-center mt-4"> Already a funder? <a href="{% url 'login' %}"> Log In </a></p>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

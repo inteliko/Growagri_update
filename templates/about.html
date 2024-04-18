@@ -1,0 +1,80 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row about-section">
+    <div class="col-md-6">
+      <img class="about-image" src="{% static 'images/supply_chain.jpeg' %}" width="400" alt="About Us Image">
+    </div>
+    <div class="col-md-6">
+      <div class="center-middle" style="margin-top: 50px;"> <!-- Added margin-top -->
+        <div>
+          <h2>About Our Company</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+          <p>Phasellus molestie magna non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5 mission-vision"> <!-- Added mt-5 class for margin-top -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Mission</h3>
+          <p class="card-text">Our mission statement goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Vision</h3>
+          <p class="card-text">Our vision statement goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <h3 class="text-center fs-4">Supporting SDG Goals</h3>
+
+  <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+          <div class="box">
+              <img src="{% static 'images/sdg1.png' %}" class="img-fluid rounded-10" alt="Image 1">
+          </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+          <div class="box">
+              <img src="{% static 'images/sdg2.png' %}" class="img-fluid rounded-10" alt="Image 2">
+          </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+          <div class="box">
+              <img src="{% static 'images/sdg8.png' %}" class="img-fluid rounded-10" alt="Image 3">
+          </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+          <div class="box">
+              <img src="{% static 'images/sdg12.png' %}" class="img-fluid rounded-10" alt="Image 4">
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+  {% endblock content %}

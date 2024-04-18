@@ -1,0 +1,71 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+
+
+<!-- Helping farmer start -->
+<div class="helping_farmer_container my-5">
+
+    <div class="container">
+        <div class="col text-center">
+            <h2 class=" display-4">Help Farmer to Win</h2>
+        </div>
+        <hr class="my-4">
+
+        <div class="row">
+
+            {% for farm in farms %}
+
+            <div class="col-md-4 col-sm-12 mb-3">
+                <div class="card p-2">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ farm.images.url }}" height="200" alt="">
+                    </div>
+                    <div class="container my-2">
+                        <h2 class="text_color">{{ farm.farm_name }}</h2>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <p class="fw-bold">Cost per unit</p>
+                                <p class="fw-bold text_color">{{ farm.price }} Taka</p>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="fw-bold">Profit earning</p>
+                                <p class="fw-bold text_color">{{ farm.custom_percentage }} </p>     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <p class="fw-bold">DURATION</p>
+                                <p class="fw-bold text_color"> {{ farm.duration }} Months</p>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <p class="fw-bold">LOCATION</p>
+                                <p class="fw-bold">{{ farm.location }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'farm_detail' category_slug=farm.category.slug farm_slug=farm.slug %}" class="btn btn-primary custom_button">Fund Now</a>
+
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+<!-- Helping farmer end -->
+
+{% endblock content %}
+

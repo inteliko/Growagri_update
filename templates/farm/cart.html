@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+<!-- cart content start -->
+<div class="container">
+    <div class="card my-5">
+      <div class="container py-2">
+        <div class="row gap-2">
+          <div class="col-md-2 col-sm-12 d-flex justify-content-center align-content-center mt-5">
+            <img src="./image/signup_bg.jpeg" height="100" width="200" alt="">
+          </div>
+          <div class="col-md-3 col-sm-12 d-flex justify-content-center flex-column align-items-center">
+            <h3 class="fw-bold">Rice Project - 1</h3>
+            <h4 class="fw-bold text_color">20,000 Taka</h4>
+          </div>
+          <div class="col-md-3 col-sm-12 d-flex justify-content-center flex-column align-items-center">
+            <div class="d-flex gap-5  align-items-center h-100">
+              <span class="icon"><i class="fas fa-minus"></i></span>
+              <p class="m-0 p-0 fw-bold">10</p>
+              <span class="icon"><i class="fas fa-plus"></i></span>
+
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <div class="d-flex flex-column align-items-center my-5">
+              <h3 class="fw-bold">Total</h3>
+              <h4 class="fw-bold text_color">20,000 Taka</h4>
+            </div>
+          </div>
+        </div>
+      
+      <div class="m-3 d-flex justify-content-end gap-4">
+        <button class="custom_button">Insurance</button>
+        <button class="custom_button">Checkout</button>
+      </div>
+    </div>
+  </div>
+  <!-- cart content end -->
+  <!-- bank info start -->
+  <div class="container my-5 ">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-3 gray_bg">
+          <h3>Our Bank Info</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint provident laudantium repellat aut doloremque
+            odio impedit laboriosam amet sit sed.</p>
+          <h5>Account Name: GHUWNWNWN</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
