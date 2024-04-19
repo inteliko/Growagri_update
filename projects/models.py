@@ -7,14 +7,13 @@ class CropType(models.Model):
     description = models.TextField(max_length=255, blank=True)
     crop_image = models.ImageField(upload_to='croptype_images/', blank=True)
 
-
     class Meta:
         verbose_name = 'croptype'
         verbose_name_plural = 'croptypes'
 
-
     def get_url(self):
-        return reverse()
+        return reverse('farms_by_croptype', args=[self.slug])
+
 
     def __str__(self):
         return self.croptype_name

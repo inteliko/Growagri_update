@@ -1,5 +1,5 @@
 from django.db import models
-from projects.models import CropType 
+from projects.models import CropType  
 from django.core.validators import MinValueValidator
 
 

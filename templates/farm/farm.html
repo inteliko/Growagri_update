@@ -17,10 +17,9 @@
             <!-- Left Side Categories List Group -->
             <div class="col-md-3">
                 <div class="list-group">
-                    <!-- Example category items -->
-                    <a href="#" class="list-group-item list-group-item-action">Category 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Category 2</a>
-                    <a href="#" class="list-group-item list-group-item-action">Category 3</a>
+                    {% for crop_type in links %}
+                        <a href="{{ crop_type.get_url }}" class="list-group-item list-group-item-action">{{ crop_type.croptype_name }}</a>
+                    {% endfor %}
                     <!-- Add more categories as needed -->
                 </div>
             </div>
