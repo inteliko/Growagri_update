@@ -52,7 +52,7 @@ def register(request):
             send_email.send()
 
             #messages.success(request, 'Registration Successful')
-            return redirect('accounts/login/?command=verification&email='+email)
+            return redirect('/accounts/login/?command=verification&email='+email)
 
     else: 
             form = RegistrationForm
