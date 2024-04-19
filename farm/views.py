@@ -6,22 +6,19 @@ from projects.models import CropType
 # Create your views here.
 
 def farm(request, crop_slug=None):
-
     croptype = None
     farms = None
 
-
-    if crop_slug != None:
-        croptype = get_object_or_404(CropType, slug= crop_slug) #categories
-        farms = farm.objects.filter(croptype_name=croptype, is_available=True)   #products
+    if crop_slug:
+        croptype = get_object_or_404(CropType, slug=crop_slug)
+        farms = Farm.objects.filter(category=croptype, is_available=True)  # Filter by category field
         farms_count = farms.count()
     else:
-
-
-        farms = Farm.objects.all().filter(is_available=True)
+        farms = Farm.objects.filter(is_available=True)
         farms_count = farms.count()
 
-    context ={
+    context = {
+        'croptype': croptype,
         'farms': farms,
         'farms_count': farms_count,
     }
