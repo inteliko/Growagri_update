@@ -8,7 +8,10 @@ class CropTypeAdmin(admin.ModelAdmin):
     readonly_fields = ('display_crop_image',)
 
     def display_crop_image(self, obj):
-        return format_html('<img src="{}" style="max-height: 100px; max-width: 100px;" />'.format(obj.crop_image.url))
+        if obj.crop_image:
+            return format_html('<img src="{}" style="max-height: 100px; max-width: 100px;" />'.format(obj.crop_image.url))
+        else:
+            return "No Image"
 
     display_crop_image.short_description = 'Crop Image Preview'
 

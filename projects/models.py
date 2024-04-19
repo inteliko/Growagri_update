@@ -8,6 +8,11 @@ class CropType(models.Model):
     crop_image = models.ImageField(upload_to='croptype_images/', blank=True)
 
 
+    class Meta:
+        verbose_name = 'croptype'
+        verbose_name_plural = 'croptypes'
+
+
     def get_url(self):
         return reverse()
 
