@@ -59,7 +59,7 @@
                     <input type="text" class="form-control mx-2 quantity" value="{{ cart_item.quantity }}" style="display: inline-block; width: 50px;">
                     <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-secondary plus-btn">+</a>
                 </div>
-                <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger remove-btn mt-3">Remove</a> <!-- Add Remove button -->
+                <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger remove-btn mt-3" onclick="return confirm('Are you sure upu want to remove this project?')" >Remove</a> <!-- Add Remove button -->
             </div>
           </div>
       </div>

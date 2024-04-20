@@ -83,11 +83,33 @@
 
 
                 </div>
+
+
+                <!-- Pagination Links -->
+                <div class="pagination justify-content-center">
+                    {% if farms.has_previous %}
+                        <a href="?page=1" class="page-link">&laquo; First</a>
+                        <a href="?page={{ farms.previous_page_number }}" class="page-link">&lsaquo; Previous</a>
+                    {% endif %}
+
+                    <span class="current-page">{{ farms.number }}</span>
+
+                    {% if farms.has_next %}
+                        <a href="?page={{ farms.next_page_number }}" class="page-link">Next &rsaquo;</a>
+                        <a href="?page={{ farms.paginator.num_pages }}" class="page-link">Last &raquo;</a>
+                    {% endif %}
+                </div>
+                <!-- End Pagination Links -->
+
             </div>
         </div>
     </div>
+
+    
 </div>
 <!-- Helping farmer end -->
+
+
 
 
 
