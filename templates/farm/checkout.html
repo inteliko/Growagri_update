@@ -1,0 +1,129 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row">
+      <!-- Bank Information Section -->
+        <!-- Bank Information Section -->
+        <div class="col-md-6 mb-4 ">
+          <h2>Our Bank Information</h2>
+          <p>Bank Name: XYZ Bank</p>
+          <p>Account Number: 1234567890</p>
+          <p>Routing Number: 0987654321</p>
+          <p>Swift Code: ABCDEFGHIJK</p>
+        </div>
+        <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Funding</h5>
+                    <!-- Project, Quantity, and Amount Table -->
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Project</th>
+                            <th>Quantity</th>
+                            <th>Single Fund</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for cart_item in cart_items %}
+                          <tr>
+                            <td>{{ cart_item.product.farm_name }}</td>
+                            <td>{{ cart_item.quantity }}</td>
+                            <td>{{ cart_item.product.price }}</td>
+                            <td>{{ cart_item.sub_total }}</td>
+
+                           
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    <!-- Regular Checkout Buttons -->
+                    <a href="#" class="btn btn-success mb-2">Bank Draft</a>
+                    <a href="#" class="btn btn-success mb-2">Paypal</a>
+                    <!-- PayPal Checkout Button -->
+                    <div id="paypal-button-container"></div>
+                  </div>
+                </div>
+        
+        
+      </div>
+    <div class="row">
+      <!-- Bank Account Information Forms (Left Side) -->
+      <div class="col-md-6">
+        <h2>Bank Account Information</h2>
+        <form>
+          <div class="form-group">
+            <label for="accountNumber">Account Number</label>
+            <input type="text" class="form-control" id="accountNumber">
+          </div>
+          <div class="form-group">
+            <label for="routingNumber">Routing Number</label>
+            <input type="text" class="form-control" id="routingNumber">
+          </div>
+          <!-- Add more form fields as needed -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+  
+      <!-- PayPal Account Information Forms (Right Side) -->
+      <div class="col-md-6">
+        <h2>PayPal Account Information</h2>
+        <form>
+          <div class="form-group">
+            <label for="paypalName">PayPal Account Name</label>
+            <input type="text" class="form-control" id="paypalName">
+          </div>
+          <div class="form-group">
+            <label for="paypalEmail">PayPal Email</label>
+            <input type="email" class="form-control" id="paypalEmail">
+          </div>
+          <!-- Add more form fields as needed -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+
+  <br>
+  
+  <!-- Include the PayPal JavaScript SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
+  
+  <!-- Script to render PayPal checkout button -->
+  <script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '100.00' // Total amount
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Transaction completed by ' + details.payer.name.given_name);
+          // Handle successful transaction here
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+  
+
+
+
+
+
+{% endblock content %}
