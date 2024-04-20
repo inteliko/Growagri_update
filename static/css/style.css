@@ -227,6 +227,27 @@
   line-height: 1.5;
   border-radius: 0.25rem;
   border: 1px solid #ced4da;
-  background-color: #fff;
+  background-color: #e08d55;
   margin: 0 10px; /* Added margin for spacing between buttons */
 }
+
+.btn-secondary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #0056b3;
+}
+
+
+.custom-button {
+  visibility: visible; /* Ensure visibility */
+  display: inline-block; /* Ensure inline display */
+  width: auto; /* Adjust width as needed */
+}
+
