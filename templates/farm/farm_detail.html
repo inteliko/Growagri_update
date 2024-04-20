@@ -113,11 +113,12 @@
 
                     section end   -->
                     
-                {% if single_product.stock > 0 %}
-                <button class="custom_button">Fund Now</button>
-                    {% else %}
-                        <h5 class="text-danger" >Out of stock</h5>
-                    {% endif %}
+                    {% if single_product.stock > 0 %}
+                    <a href="{% url 'add_cart' single_product.id %}" class="custom_button">Fund Now</a>
+                {% else %}
+                    <h5 class="text-danger">Out of stock</h5>
+                {% endif %}
+                
             </div>
         </div>
        
