@@ -88,7 +88,7 @@
                     <p class="m-0 fw-bold text_color">0 BDT/Unit</p>
                 </div>
 
-                <!-- amount section start   -->
+                <!-- amount section start  
                 <div class="card px-5 py-3 my-5">
                     <div class="d-flex gap-5 justify-content-between align-items-center h-100 mb-3">
                         <span class="icon"><i class="fas fa-minus"></i></span>
@@ -110,12 +110,14 @@
                       </div>
                     </div>
                 </div>
-                <!-- amount section end   -->
-                {% if out_of_stock %}
-                <h5>Out of stock</h5>
-                 {% else %}
+
+                    section end   -->
+                    
+                {% if single_product.stock > 0 %}
                 <button class="custom_button">Fund Now</button>
-                 {% endif %}
+                    {% else %}
+                        <h5 class="text-danger" >Out of stock</h5>
+                    {% endif %}
             </div>
         </div>
        

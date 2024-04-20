@@ -1,6 +1,8 @@
 from django.db import models
 from projects.models import CropType  
 from django.core.validators import MinValueValidator
+from django.urls import reverse
+
 
 
 class Farm(models.Model):
@@ -19,6 +21,12 @@ class Farm(models.Model):
     duration = models.IntegerField(default=None, null=True, blank=True)
     custom_percentage = models.FloatField(validators=[MinValueValidator(0)], null=True, blank=True)
 
+
+    def get_url(self):
+        # Access the slug of the associated CropType instance
+        crop_type_slug = self.category.slug
+        return reverse('farm_detail', args=[crop_type_slug, self.slug])
+    
     def __str__(self):
         return self.farm_name
     

@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from farm.models import Farm
+from .models import Cart, CartItem
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect
+
 
 
 def _cart_id(request):
@@ -10,9 +14,9 @@ def _cart_id(request):
 
 
 def add_cart(request, product_id):
-    product_id = Farm.objects.get(id=product_id) #get product
+    product = get_object_or_404(Farm, id=product_id)
 
-    try:
+    try: 
         cart = Cart.objects.get(cart_id=_cart_id(request))
     except Cart.DoesNotExist:
         cart = Cart.objects.create(
@@ -20,19 +24,25 @@ def add_cart(request, product_id):
         )
     cart.save()
 
-    try:
-        cart_item = CartItem.objects.get(product=Farm, cart=cart)
-        cart_item.quantity += 1 
+    try: 
+        cart_item = CartItem.objects.get(product=product, cart=cart)
+        cart_item.quantity +=1
         cart_item.save()
     except CartItem.DoesNotExist:
         cart_item = CartItem.objects.create(
-            product = product,
+            product = product, 
             quantity = 1, 
             cart = cart,
         )
 
         cart_item.save()
-    return redirect
+    return HttpResponse(cart_item.product)
+    
+    return redirect('cart')
+
+    
+
+
 
 def cart(request):
     return render(request, 'farm/cart.html')

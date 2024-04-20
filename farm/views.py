@@ -27,10 +27,16 @@ def farm(request, crop_slug=None):
 
 
 def farm_detail(request, crop_slug, farm_slug):
+    try:
+        single_product = Farm.objects.get(category__slug=crop_slug, slug= farm_slug)
+    except Exception as e:
+        raise e 
+    
     farm = get_object_or_404(Farm, slug=farm_slug)
     total_sum_value = farm.calculate_roi() + farm.price
     context = {
         'farm': farm,
         'total_sum_value': total_sum_value,
+        'single_product': single_product,
     }
     return render(request, 'farm/farm_detail.html', context)

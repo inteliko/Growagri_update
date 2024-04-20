@@ -154,7 +154,9 @@
                 <div class="col-md-4 col-sm-12 mb-3">
                     <div class="card p-2">
                         <div class="d-flex justify-content-center">
-                            <img  src="{{ farm.images.url }}" height="200" alt="">
+                            <a href="{{ farm.get_url }}">
+                                <img src="{{ farm.images.url }}" height="200" alt="">
+                            </a>
                         </div>
                         <div class="container my-2">
                             <h2 class="text_color">{{ farm.farm_name }}</h2>

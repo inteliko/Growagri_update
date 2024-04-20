@@ -16,8 +16,13 @@
         <div class="row">
             <!-- Left Side Categories List Group -->
             <div class="col-md-3">
+
+                <li> <a href="{% url 'farm' %}" > All Projects </a></li>
+
                 <div class="list-group">
+
                     {% for crop_type in links %}
+
                         <a href="{{ crop_type.get_url }}" class="list-group-item list-group-item-action">{{ crop_type.croptype_name }}</a>
                     {% endfor %}
                     <!-- Add more categories as needed -->
