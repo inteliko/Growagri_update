@@ -75,6 +75,8 @@ def login(request):
         user = authenticate(request, email=email, password=password)  # Using authenticate instead of auth.authenticate
 
         if user is not None:
+          
+
             auth_login(request, user)  # Using auth_login instead of login
             messages.success(request, 'You are logged in.')
             return redirect('dashboard')

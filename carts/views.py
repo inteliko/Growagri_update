@@ -4,6 +4,7 @@ from .models import Cart, CartItem
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -64,7 +65,6 @@ def remove_cart_item(request, product_id):
     
 
 
-
 def cart(request, total=0, quantity=0, cart_items=None):
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -86,6 +86,7 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
 
 
+@login_required(login_url='login')
 def checkout(request, total=0, quantity=0, cart_items=None):
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
