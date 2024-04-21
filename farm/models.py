@@ -29,6 +29,7 @@ class Farm(models.Model):
     
     def __str__(self):
         return self.farm_name
+
     
     def calculate_roi(self):
         """

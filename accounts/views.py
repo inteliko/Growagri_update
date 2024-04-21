@@ -76,6 +76,7 @@ def login(request):
 
         if user is not None:
           
+           
 
             auth_login(request, user)  # Using auth_login instead of login
             messages.success(request, 'You are logged in.')

@@ -48,8 +48,7 @@
                         </tbody>
                       </table>
                     <!-- Regular Checkout Buttons -->
-                    <a href="#" class="btn btn-success mb-2">Bank Draft</a>
-                    <a href="#" class="btn btn-success mb-2">Paypal</a>
+                 
                     <!-- PayPal Checkout Button -->
                     <div id="paypal-button-container"></div>
                   </div>
@@ -61,7 +60,9 @@
       <!-- Bank Account Information Forms (Left Side) -->
       <div class="col-md-6">
         <h2>Bank Account Information</h2>
-        
+        <form action="" method="POST">
+            {% csrf_token  %}
+
           <div class="form-group">
             <label for="accountNumber">Account Number</label>
             <input type="text" class="form-control" id="accountNumber">
@@ -71,14 +72,12 @@
             <input type="text" class="form-control" id="routingNumber">
           </div>
           <!-- Add more form fields as needed -->
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
       </div>
   
       <!-- PayPal Account Information Forms (Right Side) -->
       <div class="col-md-6">
         <h2>PayPal Account Information</h2>
-        <form>
+        
           <div class="form-group">
             <label for="paypalName">PayPal Account Name</label>
             <input type="text" class="form-control" id="paypalName">
@@ -88,39 +87,20 @@
             <input type="email" class="form-control" id="paypalEmail">
           </div>
           <!-- Add more form fields as needed -->
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" name="submit" class="custom_button">Proceed funding</button>
+
         </form>
+
+        
       </div>
+
     </div>
     
   </div>
 
   <br>
   
-  <!-- Include the PayPal JavaScript SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
-  
-  <!-- Script to render PayPal checkout button -->
-  <script>
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: '100.00' // Total amount
-            }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          alert('Transaction completed by ' + details.payer.name.given_name);
-          // Handle successful transaction here
-        });
-      }
-    }).render('#paypal-button-container');
-  </script>
-  
+
 
 
 
