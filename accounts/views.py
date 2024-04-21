@@ -95,7 +95,7 @@ def login(request):
              pass
 
             auth_login(request, user)  # Using auth_login instead of login
-            messages.success(request, 'You are logged in.')
+            messages.success(request, 'You are succesfully logged in.')
             return redirect('dashboard')
         else:
             messages.error(request, 'Invalid login credentials.')

@@ -1,159 +1,138 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% load static %}
 
-
-{% block title  %} Home {% endblock title %}
+{% block title %}
+  Home
+{% endblock %}
 
 {% block content %}
-
-
-
-{% if not cart_items %}
-
-<br><br><br><br><br>  
+  {% if not cart_items %}
+    <br /><br /><br /><br /><br />
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
-                <h2>Your project funding cart is empty</h2>
-                <p>Fund projects and help small farmers</p>
-                <a href="{% url 'farm' %}" class="btn btn-primary">Start Funding</a>
-            </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h2>Your project funding cart is empty</h2>
+          <p>Fund projects and help small farmers</p>
+          <a href="{% url 'farm' %}" class="btn btn-primary">Start Funding</a>
         </div>
+      </div>
     </div>
 
-    <br><br><br><br><br>    <br><br><br><br><br>  <br><br><br>
-
-
-
-
-{% else %}
-
-
-
-
-
-{% for cart_item in cart_items %}
-
-<div class="col-md-9">
-
-  <div class="card my-5">
-
-      <div class="container py-2">
-
-
-          <div class="row gap-2">
-
-              <div class="col-md-2 col-sm-12 d-flex justify-content-center align-content-center mt-5">
-                  <img src="{{ cart_item.product.images.url }}" height="100" width="200" alt="">
-              </div>
-              <div class="col-md-4 col-sm-12 d-flex justify-content-center flex-column align-items-center">
-                  <h3 class="fw-bold text-sm">{{ cart_item.product.farm_name }}</h3>
-                  <h4 class="text-sm">Each fund: {{ cart_item.product.price }}</h4>
-                  <h4 class="text-sm">Total funds: {{ cart_item.sub_total }}</h4>
-
-              </div>
-              <div class="col-md-3 col-sm-12 d-flex justify-content-center flex-column align-items-center">
-                <div class="col-md-6 quantity-input"> <!-- Added class to container div -->
-                    <a href="{% url 'remove_cart' cart_item.product.id  %}" class="btn btn-secondary minus-btn">-</a>
-                    <input type="text" class="form-control mx-2 quantity" value="{{ cart_item.quantity }}" style="display: inline-block; width: 50px;">
-                    <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-secondary plus-btn">+</a>
-                </div>
-                <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger remove-btn mt-3" onclick="return confirm('Are you sure upu want to remove this project?')" >Remove</a> <!-- Add Remove button -->
-            </div>
-          </div>
-      </div>
-  </div>
-  
-</div>
-
-{% endfor %}
-
-
-
-<!-- Section for Total Price and Return of Investment -->
-<div class="container">
-  <div class="row">
-      <div class="col-md-3">
-          <div class="card my-5">
+    <br /><br /><br /><br /><br /> <br /><br /><br /><br /><br /> <br /><br /><br />
+  {% else %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% for cart_item in cart_items %}
+            <div class="card my-5">
               <div class="container py-2">
-                  <div class="row">
+                <div class="row gap-2">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-2 col-sm-12 d-flex justify-content-center align-content-center mt-5">
+                        <img src="{{ cart_item.product.images.url }}" height="100" width="200" alt="" />
+                      </div>
+                      <div class="col-md-4 col-sm-12 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="fw-bold text-sm">{{ cart_item.product.farm_name }}</h3>
+                        <h4 class="text-sm">Each fund: {{ cart_item.product.price }}</h4>
+                        <h4 class="text-sm">Total funds: {{ cart_item.sub_total }}</h4>
+                      </div>
                       <div class="col-md-3 col-sm-12 d-flex justify-content-center flex-column align-items-center">
-                        <h3 class="fw-bold">Total</h3>
-                        <h4 class="fw-bold text_color" id="total">{{ total }}</h4> <!-- Display dynamic total -->
+                        <div class="col-md-6 quantity-input">
+                          <!-- Added class to container div -->
+                          <a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-secondary minus-btn">-</a>
+                          <input type="text" class="form-control mx-2 quantity" value="{{ cart_item.quantity }}" style="display: inline-block; width: 50px;" />
+                          <a href="{% url 'add_cart' cart_item.product.id %}" class="btn btn-secondary plus-btn">+</a>
+                        </div>
+                        <a href="{% url 'remove_cart_item' cart_item.product.id %}" class="btn btn-danger remove-btn mt-3" onclick="return confirm('Are you sure upu want to remove this project?')">Remove</a> <!-- Add Remove button -->
+                      </div>
                     </div>
                   </div>
-                  <!-- Additional content for Return of Investment -->
-                  <div class="row mt-3">
-                      <div class="col-md-12">
-                          <p class="fw-bold text_color">Return of Investment: $500</p>
-                      </div>
-                  </div>
-
-                  <!-- Buttons -->
-                  <div class="row mt-3">
-                      <div class="col-md-12 d-flex justify-content-end">
-                          <a href="{% url 'checkout' %}" class="btn btn-sm btn-primary">Checkout</a>
-                      </div>
-                  </div>
+                </div>
               </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="col-md-3">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card my-5">
+                  <div class="container py-2">
+                    <div class="row">
+                      <div class="col-md- col-sm-12 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="fw-bold">Total</h3>
+                        <h4 class="fw-bold text_color" id="total">{{ total }}</h4> <!-- Display dynamic total -->
+                      </div>
+                    </div>
+                    <!-- Additional content for Return of Investment -->
+                    <div class="row mt-3">
+                      <div class="col-md-12">
+                        <p class="fw-bold text_color">Return of Investment: $500</p>
+                      </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="row mt-3">
+                      <div class="col-md-12 d-flex justify-content-end">
+                        <a href="{% url 'checkout' %}" class="btn btn-sm btn-primary">Checkout</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
+    <!-- Section for Total Price and Return of Investment -->
+  {% endif %}
 
-
-
-{% endif %}
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Plus button click event
-        $('.plus-btn').click(function() {
-            var quantity = $(this).siblings('.quantity');
-            var currentVal = parseInt(quantity.val());
-            if (!isNaN(currentVal)) {
-                quantity.val(currentVal + 1);
-                updateTotalPrice($(this).closest('.card'));
-            }
-        });
-
-        // Minus button click event
-        $('.minus-btn').click(function() {
-            var quantity = $(this).siblings('.quantity');
-            var currentVal = parseInt(quantity.val());
-            if (!isNaN(currentVal) && currentVal > 1) {
-                quantity.val(currentVal - 1);
-                updateTotalPrice($(this).closest('.card'));
-            }
-        });
-
-        // Remove button click event
-        $('.remove-btn').click(function() {
-            $(this).closest('.card').remove();
-            updateTotalPrice();
-        });
-
-        // Function to update total price
-        function updateTotalPrice(card) {
-            var totalItems = 0;
-            var totalPrice = 0;
-            card.find('.row.mb-3').each(function() {
-                var quantity = parseInt($(this).find('.quantity').val());
-                var price = parseFloat($(this).find('.sub_total').text());
-                totalItems += quantity;
-                totalPrice += quantity * price;
-            });
-            card.find('.total-items').text(totalItems);
-            card.find('.total-price').text(totalPrice.toFixed(2));
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Plus button click event
+      $('.plus-btn').click(function () {
+        var quantity = $(this).siblings('.quantity')
+        var currentVal = parseInt(quantity.val())
+        if (!isNaN(currentVal)) {
+          quantity.val(currentVal + 1)
+          updateTotalPrice($(this).closest('.card'))
         }
-    });
-</script>
-
-
-
-{% endblock content %}
-
-
+      })
+    
+      // Minus button click event
+      $('.minus-btn').click(function () {
+        var quantity = $(this).siblings('.quantity')
+        var currentVal = parseInt(quantity.val())
+        if (!isNaN(currentVal) && currentVal > 1) {
+          quantity.val(currentVal - 1)
+          updateTotalPrice($(this).closest('.card'))
+        }
+      })
+    
+      // Remove button click event
+      $('.remove-btn').click(function () {
+        $(this).closest('.card').remove()
+        updateTotalPrice()
+      })
+    
+      // Function to update total price
+      function updateTotalPrice(card) {
+        var totalItems = 0
+        var totalPrice = 0
+        card.find('.row.mb-3').each(function () {
+          var quantity = parseInt($(this).find('.quantity').val())
+          var price = parseFloat($(this).find('.sub_total').text())
+          totalItems += quantity
+          totalPrice += quantity * price
+        })
+        card.find('.total-items').text(totalItems)
+        card.find('.total-price').text(totalPrice.toFixed(2))
+      }
+    })
+  </script>
+{% endblock %}
