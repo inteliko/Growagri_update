@@ -146,3 +146,6 @@ def activate(request, uidb64, token):
         messages.error(request, 'Invalid activation link')
         return redirect('register')
         
+    
+def edit_profile(request):
+    return render(request, 'accounts/edit_profile.html')
