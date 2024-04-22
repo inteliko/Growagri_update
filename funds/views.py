@@ -30,17 +30,12 @@ def place_order(request, total=0, quantity=0, ):
             #store all the required information insied fund table 
             data = Order()
             data.user = current_user
-            data.first_name = form.cleaned_data['first_name']
-            data.last_name = form.cleaned_data['last_name']
-            data.phone = form.cleaned_data['first_name']
-            data.email = form.cleaned_data['email']     
             data.bank_name = form.cleaned_data['bank_name']
             data.account_name = form.cleaned_data['account_name']
             data.account_number = form.cleaned_data['account_number']
             data.branch_name = form.cleaned_data['branch_name']
             data.paypal_account_name = form.cleaned_data['paypal_account_name']
             data.paypal_email = form.cleaned_data['paypal_email']
-            data.order_total = total
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
 

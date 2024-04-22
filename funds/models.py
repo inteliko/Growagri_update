@@ -27,17 +27,13 @@ class Order(models.Model):
     user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True, null=True)
     order_number = models.CharField(max_length=20)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=15)
-    email = models.CharField(max_length=50)
     bank_name = models.CharField(max_length=50)
     account_name = models.CharField(max_length=50)
     account_number = models.CharField(max_length=50)
     branch_name = models.CharField(max_length=50)
     paypal_account_name = models.CharField(max_length=50)
     paypal_email = models.CharField(max_length=50)
-    roi = models.FloatField()
+    roi = models.FloatField(null=True)
     status = models.CharField(max_length=10, choices=STATUS, default='New')
     ip = models.CharField(blank=True, max_length=20)
     is_ordered = models.BooleanField(default=False)
@@ -45,7 +41,7 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.first_name
+        return self.user.first_name
         
 
 class OrderProduct(models.Model):

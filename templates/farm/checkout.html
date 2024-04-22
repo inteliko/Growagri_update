@@ -57,14 +57,15 @@
         
       </div>
 
+     
       <div class="row">
-        <!-- Bank Account Information Forms (Left Side) -->
+        <!-- Bank Account Information (Left Side) -->
         <div class="col-md-6">
             <h2>Bank Account Information</h2>
             <form action="{% url 'place_order' %}" method="POST">
                 {% csrf_token  %}
-                {{ form.as_p }}
     
+                <!-- Bank Account Information Fields -->
                 <div class="form-group">
                     <label for="bankName">Bank Name</label>
                     <input type="text" class="form-control" id="bankName" name="bank_name">
@@ -81,15 +82,14 @@
                     <label for="branchName">Branch Name</label>
                     <input type="text" class="form-control" id="branchName" name="branch_name">
                 </div>
-                <!-- Add more form fields as needed -->
-                <button type="submit" class="custom_button">Proceed funding</button>
-            </form>
-        </div>
     
-        <!-- PayPal Account Information Forms (Right Side) -->
+                <!-- Add more bank account form fields as needed -->
+            </div>
+            
+        <!-- PayPal Account Information (Right Side) -->
         <div class="col-md-6">
             <h2>PayPal Account Information</h2>
-            <form>
+                <!-- PayPal Account Information Fields -->
                 <div class="form-group">
                     <label for="paypalName">PayPal Account Name</label>
                     <input type="text" class="form-control" id="paypalName" name="paypal_account_name">
@@ -98,9 +98,12 @@
                     <label for="paypalEmail">PayPal Email</label>
                     <input type="email" class="form-control" id="paypalEmail" name="paypal_email">
                 </div>
-                <!-- Add more form fields as needed -->
-            </form>
+                <!-- Add more PayPal form fields as needed -->
         </div>
+    
+        <!-- Submit button -->
+        <button type="submit" class="custom_button">Proceed with Payment</button>
+        </form>
     </div>
     
 
