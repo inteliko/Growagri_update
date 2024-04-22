@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+ 
+    <div class="container">
+
+        <h3 class="text-center md-10" >Review Your Project and Make Fund </h3>
+
+      <div class="row">
+        <div class="col-md-6"> 
+
+
+            <div class="card">
+                <div class="card-header">
+                  Bank Informations 
+                </div>
+                <div class="card-body">
+                  <p class="card-text"> {{ order.bank_name }} </p>
+                  <p class="card-text"> {{ order.account_name }} </p>
+                  <p class="card-text"> {{ order.account_number }} </p>
+                  <p class="card-text"> {{ order.branch_name }} </p>
+
+
+
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  Paypal Informations
+                </div>
+                <div class="card-body">
+                    <p class="card-text"> {{ order.paypal_account_name }} </p>
+                    <p class="card-text"> {{ order.paypal_email }} </p>
+
+
+                </div>
+              </div>
+
+              <div class="card-header">
+                Review Projects
+              </div>
+              <div class="card-body">
+
+                <!-- Project, Quantity, and Amount Table -->
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Project</th>
+                        <th>Quantity</th>
+                        <th>Single Fund</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for cart_item in cart_items %}
+                      <tr>
+                        <td>{{ cart_item.product.farm_name }}</td>
+                        <td>{{ cart_item.quantity }}</td>
+                        <td>{{ cart_item.product.price }}</td>
+                        <td>{{ cart_item.sub_total }}</td>
+
+                       
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                <!-- Regular Checkout Buttons -->
+                
+              </div>
+            </div>
+
+         
+        </div>
+
+        <div class="col-md-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card my-5">
+                  <div class="container py-2">
+                    <div class="row">
+                      <div class="col-md- col-sm-12 d-flex justify-content-center flex-column align-items-center">
+                        <h3 class="fw-bold">Total</h3>
+                        <h4 class="fw-bold " id="total">Total price: {{ total }} </h4> <!-- Display dynamic total -->
+                      </div>
+                    </div>
+                    <!-- Additional content for Return of Investment -->
+                    <div class="row mt-3">
+                      <div class="col-md-12">
+                        <p class="fw-bold text_color">Return of Investment: $500</p>
+                      </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="row mt-3">
+                      <div class="col-md-12 d-flex justify-content-end">
+                        <a href="{% url 'checkout' %}" class="btn btn-sm btn-primary">Make Payment </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section for Total Price and Return of Investment -->
+
+{% endblock %}
