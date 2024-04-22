@@ -75,6 +75,37 @@ class Account(AbstractBaseUser):
         return True
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    address_line_1 = models.CharField(blank=True, max_length=100)
+    address_line_2 = models.CharField(blank=True, max_length=100)
+  
+    profile_picture = models.ImageField(blank=True, upload_to="userprofile/")
+    nid_picture = models.ImageField(blank=True, upload_to="nidpicture/")
+    nid_number = models.CharField(blank=True, max_length=100)
+    dob = models.DateTimeField()
+    GENDER_CHOICE = [
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other'),
+    ]
+    gender = models.CharField(choices=GENDER_CHOICE, max_length=10)
+
+    nomine_name = models.CharField(blank=True, max_length=50)
+    nomine_relation = models.CharField(blank=True, max_length=50)
+    nomine_phone = models.CharField(blank=True, max_length=50)
+    nomine_nid_picture = models.ImageField(blank=True, upload_to="nomine_nidpicture/")
+    nomine_nid_number = models.CharField(blank=True, max_length=100)
+
+
+
+
+
+    def __str__(self):
+        return self.user.first_name
+    
+    def full_address(self):
+        return f"(self.address_line1) (self.address_line_2)"
 
 
 
