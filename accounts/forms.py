@@ -1,5 +1,7 @@
 from django import forms
 from .models import Account
+from .models import UserProfile
+
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
@@ -38,3 +40,27 @@ class RegistrationForm(forms.ModelForm):
 
 
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ('first_name', 'last_name', 'email', 'phone_number')
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
+
+
+
+
+
+class UserProfileForm(forms.ModelForm):
+    profile_picture = forms.ImageField(required=False, error_messages= {'invalid': ("Image files only")}, widget=forms.FileInput)
+    class Meta:
+        model = UserProfile
+        fields = ('address_line_1', 'address_line_2', 'profile_picture', 'nid_picture', 'nid_number', 'dob', 'gender', 'nomine_name', 'nomine_relation', 'nomine_phone', 'nomine_nid_picture', 'nomine_nid_number')
+
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'form-control'
