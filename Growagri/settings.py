@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'funds',
     'blog',
     'ckeditor',
+    'weather',
 
    
 ]

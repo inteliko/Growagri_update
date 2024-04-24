@@ -28,6 +28,9 @@ urlpatterns = [
     #blog 
     path('blog/', include('blog.urls')),
 
+    path('weather/', include('weather.urls')),
+
+
 
     #funds path 
 

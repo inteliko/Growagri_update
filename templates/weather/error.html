@@ -1,0 +1,51 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="display-4 text-center mt-5 mb-4">Search Weather</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter city" name="city">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center"> <!-- Center the weather data -->
+            {% if weather_data %}
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ weather_data.city }}</h2>
+                    <p class="card-text">Temperature: {{ weather_data.temperature }}°C</p>
+                    <p class="card-text">Description: {{ weather_data.description }}</p>
+                    <img src="http://openweathermap.org/img/w/{{ weather_data.icon }}.png" alt="Weather icon">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<br> 
+<br> 
+<br> 
+<br> 
+
+{% endblock content %}
