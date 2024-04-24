@@ -78,7 +78,7 @@
                 <div class="container">
                     <div class="row gap-3">
                         <div class="col-md-5 col-sm-12">
-                            <div class="card p-4 gray_bg">
+                            <div class="card p-2 ">
                                 <div class="d-flex justify-content-center">
                                     <img src="{% static 'images/grow.png' %}" class="leaf_image" alt="">
                                 </div>
@@ -195,7 +195,7 @@
     </div>
     <!-- Helping farmer end -->
     <!-- Access and finance start -->
-    <div class="container my-5">
+    <div class="container my-5" >
         <div class="row align-items-center">
             <div class="col-md-6 col-sm-12">
                 <div class="d-flex flex-column h-100 justify-content-center">
@@ -230,13 +230,35 @@
         </div>
         
         
-        <!-- Smart Supply chain end -->
+        <!-- blog  -->
 
 
         <div class="container">
-            <h3 class="text-center fs-4">Supporting SDG Goals</h3>
-
+            <h1 class="my-4 text-center">Blog & News</h1>
             <div class="row">
+                {% for post in posts %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" class="card-img-top"  alt="{{ post.title }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">{% if post.content|length > 100 %}{{ post.content|truncatechars:100 }}...{% else %}{{ post.content }}{% endif %}</p>
+                                <!-- Add a link to the detail page for the post -->
+                                <a href="{% url 'blog_detail' post.pk %}" class="btn btn-primary">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="container"  style="margin-top: 50px;">
+            <h3 class="text-center" >Supporting SDG Goals</h3>
+
+            <div class="row"  style="margin-top: 50px;">
                 <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                     <div class="box">
                         <img src="{% static 'images/sdg1.png' %}" class="img-fluid rounded-10" alt="Image 1">

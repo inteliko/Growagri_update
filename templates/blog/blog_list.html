@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1 class="my-4 text-center">Blog</h1>
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    {% if post.image %}
+                        <img src="{{ post.image.url }}" class="card-img-top"  alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{% if post.content|length > 100 %}{{ post.content|truncatechars:100 }}...{% else %}{{ post.content }}{% endif %}</p>
+                        <!-- Add a link to the detail page for the post -->
+                        <a href="{% url 'blog_detail' post.pk %}" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}

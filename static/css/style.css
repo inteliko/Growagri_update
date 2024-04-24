@@ -132,7 +132,7 @@
 }
 
 .text_color{
-  color: #06C96B;
+  color: #000000;
 }
 
 .gray_bg {
@@ -250,4 +250,7 @@
   display: inline-block; /* Ensure inline display */
   width: auto; /* Adjust width as needed */
 }
+
+
+
 

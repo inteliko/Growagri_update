@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'farm',
     'carts',
     'funds',
+    'blog',
+    'ckeditor',
+
    
 ]
 
