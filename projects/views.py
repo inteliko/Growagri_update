@@ -6,17 +6,12 @@ from blog.models import Post
 
 
 def home(request):
-    farms = Farm.objects.all().filter(is_available=True)
+    farms = Farm.objects.filter(is_available=True)[:6]  # Retrieve the first six available farms
     posts = Post.objects.order_by('-date_posted')[:3]  # Retrieve the three most recent posts
-
-
-
-
 
     context ={
         'farms': farms,
         'posts': posts,
-
     }
 
     return render(request, 'home.html', context)
