@@ -1,0 +1,123 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+<!-- dashboard content start -->
+<div class="container-fluid h-100 my-5 drawer_container">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 collapse width m-0 pb-5 show drawer" id="collapseExample">
+            <ul class="nav card flex-column navbar-dark sticky-top list-group">
+              <li class="nav-item py-2 drawer_menu">
+                <a class="nav-link" href="#">
+                  <i class="fa fa-home me-2" aria-hidden="true"></i>
+                  Overview
+                </a>
+              </li>
+              <li class="nav-item py-2 drawer_menu">
+                <a class="nav-link" href="">
+                  <i class="fa fa-home me-2" aria-hidden="true"></i>
+                  My Farm
+                </a>
+              </li>
+              <li class="nav-item py-2 drawer_menu">
+                <a class="nav-link" href="{% url 'edit_profile' %}">
+                  <i class="fa fa-home me-2" aria-hidden="true"></i>
+                  Profile
+                </a>
+              </li>
+
+              <li class="nav-item py-2 drawer_menu">
+                <a class="nav-link" href="{% url 'weather' %}">
+                  <i class="fa fa-home me-2" aria-hidden="true"></i>
+                  Weather
+                </a>
+              </li>
+              
+              <li class="nav-item py-2 drawer_menu">
+                <a class="nav-link" href="#">
+                  <i class="fa fa-home me-2" aria-hidden="true"></i>
+                  FAQ
+                </a>
+              </li>
+              
+              <li class="nav-item py-2 drawer_menu">
+                <a class="nav-link" href="#">
+                  <i class="fa fa-home me-2" aria-hidden="true"></i>
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        <div class="col">
+            <!-- <button class="btn sticky-top" data-toggle="collapse" href="#collapseExample" id="" role="button">
+                Menu
+            </button> -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="container">
+                        <h2 class="display-4 text-center mt-5 mb-4">Weather</h2>
+                        <h4 class="text-center mt-4">One Week Weather forecast for {{ city }} </h4>
+                    
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Enter city" name="city">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    
+                        {% if forecast_data %}
+                        <div class="row justify-content-center">
+                            {% for forecast in forecast_data %}
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h2 class="card-title">{{ forecast.datetime|date:'F j, Y' }}</h2>
+                                        <p class="card-text">Temperature: {{ forecast.temperature }}°C</p>
+                                        <p class="card-text">Description: {{ forecast.description }}</p>
+                                        <img src="http://openweathermap.org/img/w/{{ forecast.icon }}.png" alt="Weather icon" class="img-fluid">
+                                        <p class="card-text">Day: {{ forecast.datetime|date:'l' }}</p>
+                                        <p class="card-text">Time: {{ forecast.datetime|date:'h:i A' }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- dashboard content end -->
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
