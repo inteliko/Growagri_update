@@ -153,7 +153,7 @@ MESSAGE_TAGS = {
 }
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 #SMPT Configuration
 
@@ -162,3 +162,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'rmaksusbinislam@gmail.com'
 EMAIL_HOST_PASSWORD = 'lqbe ygjr krhz htkn'
 EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

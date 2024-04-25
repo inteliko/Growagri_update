@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
 
+
 #Email Verification 
 
 from django.template.loader import render_to_string
@@ -140,7 +141,7 @@ def activate(request, uidb64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.success(request, 'COngratulations! Your Account is activate')
+        messages.success(request, 'Congratulations! Your Account is activate')
         return redirect('login')
     else:
         messages.error(request, 'Invalid activation link')
@@ -166,3 +167,37 @@ def edit_profile(request):
         'userprofile': userprofile,
     }
     return render(request, 'accounts/edit_profile.html', context)
+
+
+def forgotPassword(request):
+    if request.method == "POST":
+        email = request.POST.get('email')  # Use get() method to safely get POST data
+
+        if Account.objects.filter(email=email).exists():  # Corrected method name
+            user = Account.objects.get(email__exact=email)
+
+            # Reset password email
+            current_site = get_current_site(request)
+            mail_subject = 'Reset Your Password'
+            message = render_to_string('accounts/reset_password_email.html', {
+                'user': user, 
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user)
+            })
+
+            to_email = email
+            send_email = EmailMessage(mail_subject, message, to=[to_email])
+            send_email.send()
+
+            messages.success(request, 'Password reset email has been sent to your email address.')
+            return redirect('login')
+        else:
+            messages.error(request, 'Account does not exist')
+            return redirect('forgotPassword')
+
+    return render(request, 'accounts/forgotPassword.html')
+
+
+def resetPassword_validate(request):
+    return HttpResponse('ok')
