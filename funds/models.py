@@ -41,8 +41,11 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.user.first_name
-        
+        if self.user:
+            return self.user.first_name
+        else:
+            return f"Order {self.order_number} (No user)"
+
 
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
