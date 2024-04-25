@@ -16,50 +16,9 @@
 <!-- dashboard content start -->
 <div class="container-fluid h-100 my-5 drawer_container">
     <div class="row">
-        <div class="col-sm-2 col-md-2 collapse width m-0 pb-5 show drawer" id="collapseExample">
-            <ul class="nav card flex-column navbar-dark sticky-top list-group">
-              <li class="nav-item py-2 drawer_menu">
-                <a class="nav-link" href="#">
-                  <i class="fa fa-home me-2" aria-hidden="true"></i>
-                  Overview
-                </a>
-              </li>
-              <li class="nav-item py-2 drawer_menu">
-                <a class="nav-link" href="">
-                  <i class="fa fa-home me-2" aria-hidden="true"></i>
-                  My Farm
-                </a>
-              </li>
-              <li class="nav-item py-2 drawer_menu">
-                <a class="nav-link" href="{% url 'edit_profile' %}">
-                  <i class="fa fa-home me-2" aria-hidden="true"></i>
-                  Profile
-                </a>
-              </li>
 
-              <li class="nav-item py-2 drawer_menu">
-                <a class="nav-link" href="{% url 'weather' %}">
-                  <i class="fa fa-home me-2" aria-hidden="true"></i>
-                  Weather
-                </a>
-              </li>
-              
-              <li class="nav-item py-2 drawer_menu">
-                <a class="nav-link" href="#">
-                  <i class="fa fa-home me-2" aria-hidden="true"></i>
-                  FAQ
-                </a>
-              </li>
-              
-              <li class="nav-item py-2 drawer_menu">
-                <a class="nav-link" href="#">
-                  <i class="fa fa-home me-2" aria-hidden="true"></i>
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </div>
-        <div class="col">
+       {% include "includes/dashboard_sidebar.html" %}
+       
             <!-- <button class="btn sticky-top" data-toggle="collapse" href="#collapseExample" id="" role="button">
                 Menu
             </button> -->
@@ -74,46 +33,42 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title text-center">Total Farm</h5>
-                                    <p class="card-text text-center fw-bold">1</p>
+                                    <p class="card-text text-center fw-bold">{{ ordered_count }}</p>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <div class="card py-3" style="background-color: rgba(202, 57, 5, 0.875); color: white;">
+                            <div class="card py-3" style="">
                                 <div class="d-flex justify-content-center">
                                     <img src="./image/leaf.png" height="50" width="50" alt="">
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">Total Found</h5>
-                                    <p class="card-text text-center fw-bold">20,000 BDT</p>
-                                </div>
+                                    <h5 class="card-title text-center">Total Fund</h5>
+                                    <p class="card-text text-center fw-bold"> {{ total_amount }}</p>
+                                  </div>
                             </div>
                         </div>
+                       
                         <div class="col-md-3 col-sm-12">
-                            <div class="card py-3" style="background-color: rgb(3, 130, 3); color: white;">
-                                <div class="d-flex justify-content-center">
-                                    <img src="./image/leaf.png" height="50" width="50" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Total Return</h5>
-                                    <p class="card-text text-center fw-bold">20,000 BDT</p>
-                                </div>
+                          <div class="card py-3" style="">
+                            <div class="d-flex justify-content-center">
+                                <!-- User Image -->
+                                <img src="https://www.w3schools.com/howto/img_avatar.png" height="50" width="50" style="border-radius: 50%;" alt="User Profile Image">
+                            </div>
+                            <div class="card-body">
+                                <!-- Full Name -->
+                                <h5 class="card-title text-center">{{user.first_name}}</h5>
+                                <!-- Email -->
+                                <p class="card-text text-center">{{user.email}}</p>
+                                <!-- Phone Number -->
+                                <p class="card-text text-center">{{user.phone_number}}</p>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-12">
-                            <div class="card py-3" style="background-color: rgb(128, 4, 200); color: white;">
-                                <div class="d-flex justify-content-center">
-                                    <img src="./image/leaf.png" height="50" width="50" alt="">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">Total Return</h5>
-                                    <p class="card-text text-center fw-bold">20,000 BDT</p>
-                                </div>
-                            </div>
+                        
                         </div>
                         <div class="col-md-6 col-sm-12">
-                            <h3 class="fw-bold">Statics</h3>
-                            <div class="card py-3" style="background-color: rgb(128, 4, 200); color: white;">
+                            <div class="card py-3" style="">
                                 <div class="d-flex justify-content-center">
                                     <img src="./image/leaf.png" height="50" width="50" alt="">
                                 </div>

@@ -1,0 +1,44 @@
+<div class="col-sm-2 col-md-2 collapse width m-0 pb-5 show drawer" id="collapseExample">
+    <ul class="nav card flex-column navbar-dark sticky-top list-group">
+      <li class="nav-item py-2 drawer_menu">
+        <a class="nav-link" href="{% url 'dashboard' %}">
+          <i class="fa fa-home me-2" aria-hidden="true"></i>
+          Overview
+        </a>
+      </li>
+      <li class="nav-item py-2 drawer_menu">
+        <a class="nav-link" href="{% url 'my_funds' %}">
+          <i class="fa fa-home me-2" aria-hidden="true"></i>
+          My Farm
+        </a>
+      </li>
+      <li class="nav-item py-2 drawer_menu">
+        <a class="nav-link" href="{% url 'edit_profile' %}">
+          <i class=" me-2" aria-hidden="true"></i>
+          Profile  
+        </a>
+      </li>
+
+      <li class="nav-item py-2 drawer_menu">
+        <a class="nav-link" href="{% url 'weather' %}">
+          <i class="fa fa-sun-o me-2" aria-hidden="true"></i>
+          Weather
+        </a>
+      </li>
+      
+      <li class="nav-item py-2 drawer_menu">
+        <a class="nav-link" href="#">
+          <i class="fa fa-home me-2" aria-hidden="true"></i>
+          FAQ
+        </a>
+      </li>
+      
+      <li class="nav-item py-2 drawer_menu">
+        <a class="nav-link" href="{% url 'logout' %}">
+          <i class="fa fa-home me-2" aria-hidden="true"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+<div class="col">

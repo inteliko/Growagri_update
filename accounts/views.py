@@ -7,6 +7,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login as auth_login 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from funds.models import Order
 
 
 
@@ -65,6 +66,9 @@ def register(request):
     context = {
         'form': form,
     }
+
+
+    
   
     return render(request, 'accounts/register.html', context)
 
@@ -128,7 +132,14 @@ def logout(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard/dashboard.html')
+    orders = Order.objects.filter(user_id=request.user.id, is_ordered=True).order_by('created_at')
+    orders_count = orders.count()
+    context = {
+        'ordered_count': orders_count,
+    }
+
+    return render(request, 'dashboard/dashboard.html', context)
+
 
 
 def activate(request, uidb64, token):
@@ -201,3 +212,18 @@ def forgotPassword(request):
 
 def resetPassword_validate(request):
     return HttpResponse('ok')
+
+def my_funds(request):
+    orders = Order.objects.filter(user=request.user, is_ordered=True).order_by('-created_at')
+
+    order_products = []
+
+    for order in orders:
+        order_products.extend(order.orderproduct_set.all())
+
+    context = {
+        'orders': orders,
+        'order_products': order_products,
+    }
+
+    return render(request, 'dashboard/my_funds.html', context)

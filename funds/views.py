@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from carts.models import CartItem
 from .forms import OrderForm
-from .models import Order, Payment
+from .models import Order, Payment, OrderProduct 
+from farm.models import Farm
 import datetime
 import json
 
@@ -25,6 +26,32 @@ def payments(request):
     order.payment = payment
     order.is_ordered = True
     order.save()
+
+
+    #move cart to order table 
+
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    for item in cart_items:
+        orderproduct = OrderProduct()
+        orderproduct.order_id = order.id  # Assuming 'order' is defined elsewhere and has an 'id' attribute
+        orderproduct.payment = payment  # Assuming 'payment' is defined elsewhere
+        orderproduct.user_id = request.user.id  # Assuming 'request.user.id' is valid
+        orderproduct.product_id = item.product_id 
+        orderproduct.quantity = item.quantity
+        orderproduct.product_price = item.product.price
+        orderproduct.ordered = True
+        orderproduct.save()  # Corrected typo from 'sace()' to 'save()'
+
+
+        #reduce quantity 
+
+        product = Farm.objects.get(id=item.product_id)
+        product.stock -= item.quantity
+        product.save()
+
+    CartItem.objects.filter(user=request.user).delete()
+
 
 
     return render(request, 'funds/payments.html')

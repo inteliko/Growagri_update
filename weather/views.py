@@ -8,7 +8,7 @@ def weather_view(request):
     if request.method == 'POST':
         city = request.POST.get('city', 'indore')
     else:
-        city = 'indore'
+        city = 'Dhaka'
 
     api_key = 'e3aff9dc246a6d6567ce7db04a8f4249'
     url = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric'
