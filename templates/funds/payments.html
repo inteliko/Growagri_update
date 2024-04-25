@@ -88,14 +88,12 @@
                     <div class="row">
                       <div class="col-md- col-sm-12 d-flex justify-content-center flex-column align-items-center">
                         <h3 class="fw-bold">Total</h3>
-                        <h4 class="fw-bold " id="total">Total price: {{ total }} </h4> <!-- Display dynamic total -->
+                        <h4 class="fw-bold " id="total">Total price: ${{ total }} </h4> <!-- Display dynamic total -->
                       </div>
                     </div>
                     <!-- Additional content for Return of Investment -->
                     <div class="row mt-3">
-                      <div class="col-md-12">
-                        <p class="fw-bold text_color">Return of Investment: $500</p>
-                      </div>
+                     
                     </div>
 
                     <!-- Buttons -->
@@ -116,9 +114,33 @@
     </div>
     <!-- Section for Total Price and Return of Investment -->
 
-
     <script>
-      // Render the PayPal button into #paypal-button-container
+
+
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    
+      var ammount = "{{ total }}"
+      var  url = "{% url 'payments' %}"
+      var csrftoken = getCookie('csrftoken');
+      var orderID = "{{order.order_number}}"
+      var payment_method = 'PayPal'
+
+
+
       paypal.Buttons({
 
         style: {
@@ -128,58 +150,41 @@
           height: 40
       },
 
-          // Call your server to set up the transaction
+
           createOrder: function(data, actions) {
-              return fetch('/demo/checkout/api/paypal/order/create/', {
-                  method: 'post'
-              }).then(function(res) {
-                  return res.json();
-              }).then(function(orderData) {
-                  return orderData.id;
+              return actions.order.create({
+                  purchase_units: [{
+                      amount: {
+                          value: ammount,
+                      }
+                  }]
               });
           },
-
-          // Call your server to finalize the transaction
           onApprove: function(data, actions) {
-              return fetch('/demo/checkout/api/paypal/order/' + data.orderID + '/capture/', {
-                  method: 'post'
-              }).then(function(res) {
-                  return res.json();
-              }).then(function(orderData) {
-                  // Three cases to handle:
-                  //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
-                  //   (2) Other non-recoverable errors -> Show a failure message
-                  //   (3) Successful transaction -> Show confirmation or thank you
+              return actions.order.capture().then(function(details) {
 
-                  // This example reads a v2/checkout/orders capture response, propagated from the server
-                  // You could use a different API or structure for your 'orderData'
-                  var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+                console.log(details)
+                sendData();
+                function sendData(){
+                  fetch(url, {
+                    method : "POST",
+                    headers: {
+                      "content-type": "application/json",
+                      "X-CSRFToken": csrftoken,
+                    },
+                    body: JSON.stringify({
+                      orderID: orderID,
+                      transID: details.id,
+                      payment_method: payment_method,
+                      status: details.status
 
-                  if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
-                      return actions.restart(); // Recoverable state, per:
-                      // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
-                  }
-
-                  if (errorDetail) {
-                      var msg = 'Sorry, your transaction could not be processed.';
-                      if (errorDetail.description) msg += '\n\n' + errorDetail.description;
-                      if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
-                      return alert(msg); // Show a failure message (try to avoid alerts in production environments)
-                  }
-
-                  // Successful capture! For demo purposes:
-                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                  var transaction = orderData.purchase_units[0].payments.captures[0];
-                  alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
-
-                  // Replace the above to show a success message within this page, e.g.
-                  // const element = document.getElementById('paypal-button-container');
-                  // element.innerHTML = '';
-                  // element.innerHTML = '<h3>Thank you for your payment!</h3>';
-                  // Or go to another URL:  actions.redirect('thank_you.html');
+                    }),
+                  })
+                 // .then(response => response.json())
+                  // .then(data => console.log(data));
+                }
               });
           }
-
       }).render('#paypal-button-container');
   </script>
 
