@@ -10,7 +10,6 @@ from django.http import HttpResponse
 from funds.models import Order
 
 
-
 #Email Verification 
 
 from django.template.loader import render_to_string
@@ -24,6 +23,8 @@ from django.core.mail import EmailMessage
 from carts.views import _cart_id
 from carts.models import Cart, CartItem
 import requests
+import certifi
+
 
 #views here.
 
