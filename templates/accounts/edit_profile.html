@@ -29,7 +29,13 @@
           <div class="col-md-12">
             <h2>Edit Your Profile</h2>
             <div class="text-right">
-                <img src="{{ userprofile.profile_picture.url }}" alt="Profile Picture" width="100"  style="border-radius: 50px;" >
+              {% if userprofile.profile_picture %}
+              <img src="{{ userprofile.profile_picture.url }}" alt="Profile Picture" width="100" style="border-radius: 50px;">
+          {% else %}
+              <!-- Provide a default profile picture or display a placeholder -->
+              <img src="{% static 'path/to/default/profile_picture.jpg' %}" alt="Default Profile Picture" width="100" style="border-radius: 50px;">
+          {% endif %}
+          
             </div>
             <form action="" method="POST">
               {% csrf_token %}
