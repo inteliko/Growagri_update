@@ -81,7 +81,7 @@ def login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = authenticate(request, email=email, password=password)  # Using authenticate instead of auth.authenticate
+        user = auth.authenticate( email=email, password=password)  # Using authenticate instead of auth.authenticate
 
         if user is not None:
           
