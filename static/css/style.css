@@ -261,3 +261,10 @@
   text-decoration: none;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
   }
+
+
+  .nav-item.active .nav-link {
+    color: green; /* Change text color to green for active link */
+    font-weight: bold; /* Make text bold */
+    text-decoration: underline; /* Add underline to active link */
+}
