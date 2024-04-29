@@ -92,6 +92,7 @@ def remove_cart(request, product_id, cart_item_id):
 
 
 
+
 def remove_cart_item(request, product_id):
 
     product = get_object_or_404(Farm, id=product_id)
