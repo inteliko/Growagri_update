@@ -12,6 +12,10 @@ urlpatterns = [
     path('risk-policy/', views.risk_policy, name='risk-policy'),
     path('return-investment/', views.return_investment, name='return-investment'),
     path('contact/', views.contact, name='contact'),
+    path('funders/', views.funders, name='funders'),
+    path('farmers/', views.farmers, name='farmers'),
+
+
 
 
 

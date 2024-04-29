@@ -1,0 +1,100 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+<style>
+    /* Custom styles for this template */
+    .top-section { 
+        background-image: url('/static/images/handshake.jpeg'); 
+        background-size: cover;
+        background-position: center; /* Adjust as needed */
+        background-repeat: no-repeat; /* Prevent image from repeating */
+        color: black;
+        text-align: center;
+        padding: 100px 0;
+        height: 400px; /* Adjust height as needed */
+    }
+    
+    .who-we-work, .how-we-work {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+        text-align: center;
+    }
+    .fund-section {
+        padding: 50px 0;
+    }
+    .bullet-points {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .bullet-points li {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Section with Image and Text -->
+<div class="top-section" >
+<div class="container">
+    <h1>Welcome to Our Grow Agri</h1>
+    <p> Enabling Digital Lending Services to
+        Farmers and Agri MSMEs</p>
+</div>
+</div>
+
+<!-- Who We Work With Section -->
+<div class="who-we-work">
+<div class="container">
+    <h2> Enabling Investment in Agriculture
+    </h2>
+    <p>Besides working with financial institutions, we also help unlock financing from individuals who want to invest in agriculture projects and want to earn profitable returns while also creating impact. We offer various sizes of investment in a wide category of agriculture projects which are managed by farmers. We offer attractive yields for the investors and also de risk their investment through insurance offerings. Most importantly we offer full transparency of the full process.</p>
+</div>
+</div>
+
+<!-- How We Work Section -->
+<div class="how-we-work">
+<div class="container">
+    <h2>How We Work</h2>
+    <p>We work with financial institutions and lending partners to offer financing for Micro Small and Medium Enterprises in the agriculture sector including farmers, traders, input retailers and other agri businesses. We use alternative data and a proprietary credit scoring algorithm to identify the viability of the customers. Our lending partners approve the applications and transfer the fund within the shortest possible time. We work with these Agri MSMEs, providing them with advisory services, training, data collection and monitor them to ensure that their businesses are profitable and they can repay back the money on time.</p>
+</div>
+</div>
+
+<!-- Funding Section -->
+<div class="fund-section">
+<div class="container">
+    <div class="row">
+        <!-- Left Image -->
+        <div class="col-md-6">
+            <img src="{% static 'images/handshake.jpeg' %}" alt="Image" class="img-fluid">
+
+        </div>
+        <!-- Right Content -->
+        <div class="col-md-6">
+            <h2>How to Fund</h2>
+            <ul class="bullet-points">
+                <li><strong>Open an Account:</strong> Sign up to begin funding</li>
+                <li><strong>Creating Access to Finance for Farmers:</strong> Explore currently listed farms in Farm's "All Farms" section to discover the perfect funding opportunity.</li>
+                <li><strong>Watch the Farms Grow:</strong> Keep track of farm progress by monitoring them through the iFarmer app and receiving regular updates from our team.</li>
+                <li><strong>Harvest your Returns:</strong> When the farms mature and the products are sold, both you and the farmers earn from the harvest.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+{% endblock content %}

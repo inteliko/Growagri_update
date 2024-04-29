@@ -1,0 +1,75 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+<style>
+    /* Custom styles for this template */
+    .top-section { 
+        background-image: url('/static/images/womanfarmer.jpeg'); 
+        background-size: cover;
+        background-repeat: no-repeat; /* Prevent image from repeating */
+        color: black;
+        text-align: center;
+        padding: 100px 0;
+        height: 400px; /* Adjust height as needed */
+    }
+    .who-we-work, .how-we-work {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+        text-align: center;
+    }
+    .fund-section {
+        padding: 50px 0;
+    }
+    .bullet-points {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .bullet-points li {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Section with Image and Text -->
+<div class="top-section" >
+<div class="container">
+    <h1>HELPING FARMERS WIN</h1>
+    <p> 
+        Combining finance, technology and Supply Chain</p>
+</div>
+</div>
+
+
+<div class="who-we-work">
+    <div class="container">
+        <h2> What We Offer
+        </h2>
+        <p>In everything we do, we put the farmers at the center of our work. Our aim is to increase farmers' income and improve their livelihood by providing bundled services of finance, access to inputs. timely advisory and access to the right markets through our platform.</p>
+    </div>
+    </div>
+    
+    
+    
+    
+
+
+<!-- Funding Section -->
+
+
+<!-- Who We Work With Section -->
+
+
+{% endblock content %}

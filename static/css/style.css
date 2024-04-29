@@ -268,3 +268,28 @@
     font-weight: bold; /* Make text bold */
     text-decoration: underline; /* Add underline to active link */
 }
+
+
+
+.top-section { 
+  background-image: url('../images/womanfarmer.jpeg'); 
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 100px 0;
+}
+.who-we-work, .how-we-work {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+  text-align: center;
+}
+.fund-section {
+  padding: 50px 0;
+}
+.bullet-points {
+  list-style-type: none;
+  padding-left: 0;
+}
+.bullet-points li {
+  margin-bottom: 20px;
+}

@@ -40,3 +40,10 @@ def return_investment(request):
 def contact(request):
     return render(request, 'contact.html')
 
+def funders(request):
+    return render(request, 'method/funders.html')
+
+def farmers(request):
+    return render(request, 'method/farmers.html')
+
+
