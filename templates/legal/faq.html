@@ -13,142 +13,120 @@
 {% block content %}
 
 
-<div class="container">
+<!-- dashboard content start -->
+<div class="container-fluid h-100 my-5 drawer_container">
     <div class="row">
-          <div class="col-lx-12">
-              <div class="card">
-                  <div class="card-body">
-                    <div class="row justify-content-center mt-4">
-                        <div class="col-xl-5 col-lg-8">
-                            <div class="text-center">
-                                <h3>Questions About GrowAgri ?</h3>
-                                <p class="text-muted">If several languages coalesce, the grammar of the resulting language
-                                    is more simple and regular than that of the individual</p>
-                                <div>
-                                    <button type="button" class="btn btn-primary me-2">Email Us</button>
-                                    <button type="button" class="btn btn-success">Send us a tweet</button>
-                                </div>
+
+       {% include "includes/dashboard_sidebar.html" %}
+       
+            <!-- <button class="btn sticky-top" data-toggle="collapse" href="#collapseExample" id="" role="button">
+                Menu
+            </button> -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Your content here -->
+                    
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                              What is GrowAgri ?
+                            </button>
+                          </h2>
+                          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">GrowAgri is an award-winning agri-fintech business that enables small-scale
+                                farmers and Agri Businesses to maximize their profit. GrowAGRI  bundles everything that a farmer needs: Farm financing, agriculture inputs, advisory, insurance and access to markets.</div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                              How Grow Agri Works? 
+                            </button>
+                          </h2>
+                          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"> Post to your signup using the Grow Agri Web Application, make sure to complete your profile by filling out the necessary details. You can then check the available farms for funding and fund by following the steps as you move along the way. At the end of the stipulated farming period, you will receive a percentage of the earnings made from the sale of the produce along with your initial fund (Principal amount) in your designated bank account mentioned on your profile. </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                              How funders given evidence on the farms bought? 
+                            </button>
+                          </h2>
+                          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body" > Each successful funding is carried forward in the following way:
+ 
+                                1. Payment made through electronic fund transfers or cheque
+                                2. Payment verified by Team GrowAgri
+                                3. Invoice is issued
+                                4. The 5 working day refund period begins where the funder is entitled to a full refund (After deducting 2.5% transaction fee) if he/she requests for it
+                                5. Following the end of the refund period, the fund is transferred to the field operations team for further perusal
+                                6. 15/16 days after the date mentioned on the invoice, the certificate of ownership is issued, stating that the farm is fully operational.
+                                 
+                                The Certificate of Ownership explains the ownership of the asset and Grow Agri’s responsibilities in this regard.
+                                For any further assistance, please reach out to us directly by writing to us at help@growagri.com or calling our hotline number at +880 130 00000000. </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                How long does the farm cycle run?
+                              </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body" > Depending on the farm you select, the cycle can run from 4 months to up to 12 months. At the end of the farm cycle iFarmer facilitates the sale of the agricultural product and gives you your earnings within the stipulated time as mentioned on the certificate. </div>
                             </div>
                         </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
-                    <div class="row justify-content-center mt-5">
-                        <div class="col-9">
-                            <ul class="nav nav-tabs  nav-tabs-custom nav-justified justify-content-center faq-tab-box" id="pills-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="pills-genarel-tab" data-bs-toggle="pill" data-bs-target="#pills-genarel" type="button" role="tab" aria-controls="pills-genarel" aria-selected="true">
-                                        <span class="font-size-16">Funders</span>
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-privacy_policy-tab" data-bs-toggle="pill" data-bs-target="#pills-privacy_policy" type="button" role="tab" aria-controls="pills-privacy_policy" aria-selected="false">
-                                        <span class="font-size-16">Farmers</span>
-                                    </button>
-                                  </li>
-                                  <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-teachers-tab" data-bs-toggle="pill" data-bs-target="#pills-pricing_plan" type="button" role="tab" aria-controls="pills-pricing_plan" aria-selected="false">
-                                        
-                                        <span class="font-size-16">Smart Supply Chain &amp; Plans</span>
-                                    </button>
-                                  </li>
-                              </ul>
-                        </div>
-                        <div class="col-lg-9">
-                            <div class="tab-content pt-3" id="pills-tabContent">
-                                <div class="tab-pane fade active show" id="pills-genarel" role="tabpanel" aria-labelledby="pills-genarel-tab">
-                                    <div class="row g-4 mt-2">
-                                        <div class="col-lg-6">
-                                            <h5>What is Lorem Ipsum ?</h5>
-                                        <p class="text-muted">If several languages coalesce, the grammar of the resulting language is more simple 
-                                            and regular than that of the individual languages. The new common language will be more simple and 
-                                            regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>Why do we use it ?</h5>
-                                            <p class="text-muted">Their separate existence is a myth. For science, music, sport, etc, 
-                                                Europe uses the same vocabulary.</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>Where does it come from ?</h5>
-                                        <p class="text-muted">If several languages coalesce, the grammar of the resulting language is more simple 
-                                            and regular than that of the individual languages. The new common language will be more simple and 
-                                            regular than the existing
-                                        </p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>Where can I get some?</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more 
-                                                simple and regular than that of the individual languages. </p>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="tab-pane fade" id="pills-privacy_policy" role="tabpanel" aria-labelledby="pills-privacy_policy-tab">
-                                    <div class="row g-4 mt-2">
-                                        <div class="col-lg-6">
-                                            <h5>Where can I get some ?</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple
-                                                and regular than that of the individual languages. The new common language will be more
-                                                simple and regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>Where does it come from ?</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple
-                                                and regular than that of the individual languages. The new common language will be more
-                                                simple and regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>Why do we use it ?</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple
-                                                and regular than that of the individual languages. The new common language will be more
-                                                simple and regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>What is Genius privacy policy</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple
-                                                and regular than that of the individual languages. The new common language will be more
-                                                simple and regular than the existing</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-pricing_plan" role="tabpanel">
-                                    <div class="row g-4 mt-4">
-                                        <div class="col-lg-6">
-                                            <h5>Where does it come from ?</h5>
-                                        <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple
-                                            and regular than that of the individual languages. The new common language will be more
-                                            simple and regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>Why do we use it ?</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple
-                                                and regular than that of the individual languages. The new common language will be more
-                                                simple and regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>What is Lorem Ipsum ?</h5>
-                                        <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple 
-                                            and regular than that of the individual languages. The new common language will be more 
-                                            simple and regular than the existing</p>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <h5>What is Lorem Ipsum?</h5>
-                                            <p class="lg-base">If several languages coalesce, the grammar of the resulting language is more simple 
-                                                and regular than that of the individual languages. The new common language will be more 
-                                                simple and regular than the existing</p>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-                        </div>
-                    </div>
-                    <!-- end row -->
-                  </div>
-              </div>
-          </div>
-      </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                               How much will i get as my earnings on the farms i purchased?
+                              </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body" > Earning is based on a earning-sharing criterion and will depend on the farm you are buying. For example, if you are buying a cow farm with 15% projected earnings, at the end of the farm cycle you will receive a total of your principal amount plus the 15% projected earnings on your principal amount. </div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                What happend to my funds? 
+                              </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body" > The funds are used to purchase the agricultural product for our registered farmers as well as other amenities required for effective farming, such as vaccination, pesticides, fertilizers etc. We are also keen on providing constant advisory services to the farmers to make sure the management is efficient to ensure the maximum output. At the end of the farming cycle, Grow Agri ensures end market linkage so that the ready products are sold to the right buyer at the right price.</div>
+                            </div>
+                          </div>
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                How will i be helping the farmers? 
+                              </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body" > You contribute by eliminating the need for loans which come with high interest. This is a burden our farmers have been carrying for ages and with your help through GrowAgri, they can move towards a better standard of living.</div>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
     </div>
+</div>
+
+<!-- dashboard content end -->
+
+
+
+
+
+
+
 
 
 

@@ -227,3 +227,5 @@ def my_funds(request):
     }
 
     return render(request, 'dashboard/my_funds.html', context)
+
+

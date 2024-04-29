@@ -1,0 +1,147 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+
+<style>
+  /* Custom styles for this template */
+  body {
+      padding-top: 60px;
+  }
+  .container {
+      max-width: 960px;
+  }
+  .form-control {
+      min-height: 38px;
+      box-shadow: none;
+      font-size: 15px;
+  }
+  .form-control:focus {
+      border-color: #5cb85c;
+  }
+  .form-control,
+  .btn {
+      border-radius: 3px;
+  }
+  .contact-form .row {
+      margin-bottom: 20px;
+  }
+  .contact-form label {
+      font-weight: 600;
+  }
+  .contact-form .btn-primary {
+      min-width: 150px;
+      background-color: #5cb85c;
+      border: none;
+  }
+  .contact-form .btn-primary:hover {
+      background-color: #4cae4c;
+  }
+  .contact-info i {
+      font-size: 24px;
+      margin-right: 15px;
+  }
+  #map {
+      height: 400px;
+      width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<div class="container">
+  <a class="navbar-brand" href="#">Company Name</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+          </li>
+      </ul>
+  </div>
+</div>
+</nav>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-md-10">
+      <div class="contact-form">
+          <h2 class="mb-4 mt-5 text-center">Contact Us</h2>
+          <form>
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="name">Your Name</label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="email">Your Email</label>
+                          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                      </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="subject">Subject</label>
+                  <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+              </div>
+              <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+  </div>
+</div>
+<div class="row mt-5 justify-content-center">
+  <div class="col-lg-10">
+      <div id="map"></div>
+  </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+function initMap() {
+  // Map options
+  var options = {
+      zoom: 8,
+      center: { lat: 40.7128, lng: -74.0060 } // Example coordinates (New York)
+  };
+  // New map
+  var map = new google.maps.Map(document.getElementById('map'), options);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+
+
+
+
+{% endblock content %}

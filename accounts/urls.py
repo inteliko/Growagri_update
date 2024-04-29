@@ -21,6 +21,10 @@ urlpatterns = [
 
 
     path('my_funds/', views.my_funds, name='my_funds')
+
+    
+
+
     
 
 

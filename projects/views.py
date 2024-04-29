@@ -27,4 +27,16 @@ def about(request):
 def faq(request):
     return render(request, 'legal/faq.html')
 
+def privacy_policy(request):
+    return render(request, 'legal/privacy_policy.html')
+
+def risk_policy(request):
+    return render(request, 'legal/risk_policy.html')
+
+
+def return_investment(request):
+    return render(request, 'legal/return_investment.html')
+
+def contact(request):
+    return render(request, 'contact.html')
 

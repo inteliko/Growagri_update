@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="mb-4">Risk and Policy</h1>
+            <h2>Risk Disclosure Statement</h2>
+            <p>Investment in agricultural funding carries a high level of risk and may not be suitable for all investors. Before deciding to participate in agricultural funding, you should carefully consider your investment objectives, level of experience, and risk appetite. The possibility exists that you could sustain a loss of some or all of your initial investment and therefore you should not invest money that you cannot afford to lose. You should be aware of all the risks associated with agricultural funding and seek advice from an independent financial advisor if you have any doubts.</p>
+            <h2>Policy Statement</h2>
+            <p>Our platform is committed to maintaining the confidentiality, integrity, and security of personal information entrusted to us by our users. We adhere to strict policies and procedures to safeguard your information and protect it from unauthorized access, disclosure, alteration, or destruction.</p>
+            <p>We collect personal information from users solely for the purpose of providing and improving our services. We do not sell, trade, or otherwise transfer your personal information to outside parties without your consent, except as required by law.</p>
+            <p>We may use cookies to enhance your browsing experience and track usage patterns on our platform. You can control cookies through your browser settings or opt-out of certain tracking technologies, but this may affect the functionality of our website.</p>
+            <p>We reserve the right to update or modify our Risk and Policy section at any time without prior notice. It is your responsibility to review this section periodically for any changes.</p>
+            <p>If you have any questions or concerns about our Risk and Policy section, please contact us.</p>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+{% block title  %} Home {% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="mb-4">Return on Investment (ROI)</h1>
+            <h2>Overview</h2>
+            <p>At [Your Company Name], we understand that investors want to see a favorable return on their investment. We are committed to providing transparency and clarity regarding the potential returns you can expect from investing through our platform.</p>
+            <h2>How ROI is Calculated</h2>
+            <p>Return on Investment (ROI) is calculated by dividing the net profit generated from an investment by the initial investment cost, and then expressing the result as a percentage. The formula for ROI is:</p>
+            <p class="mb-4">\[ ROI = \frac{{\text{{Net Profit}}}}{{\text{{Initial Investment Cost}}}} \times 100\% \]</p>
+            <h2>Factors Affecting ROI</h2>
+            <ul>
+                <li>Crop yield and quality</li>
+                <li>Market demand and prices</li>
+                <li>Weather conditions and climate risks</li>
+                <li>Operational expenses such as labor, equipment, and maintenance costs</li>
+                <li>Government policies and regulations affecting the agricultural sector</li>
+            </ul>
+            <h2>Expected ROI Range</h2>
+            <p>The expected ROI range for investments made through our platform varies depending on the specific agricultural projects and market conditions. While we strive to provide estimates of potential returns, it's important to note that agricultural investments inherently carry risks, and actual returns may differ from initial projections.</p>
+            <h2>Risk Mitigation Strategies</h2>
+            <ul>
+                <li>Thorough due diligence and risk assessment of agricultural projects</li>
+                <li>Diversification of investment portfolios across different crops, regions, and project types</li>
+                <li>Monitoring and management of potential risks such as weather-related events, pests, and diseases</li>
+                <li>Collaboration with experienced farmers, agronomists, and industry experts to optimize project outcomes</li>
+            </ul>
+            <h2>Monitoring and Reporting</h2>
+            <p>We provide regular updates and reports to investors, allowing them to track the progress and performance of their investments. Our platform offers transparent communication channels and access to relevant data and analytics to help investors make informed decisions.</p>
+            <h2>Conclusion</h2>
+            <p>At [Your Company Name], we are dedicated to facilitating profitable and sustainable agricultural investments for our users. While ROI is an important metric, we prioritize long-term value creation and positive impacts on local communities and the environment.</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
