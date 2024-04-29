@@ -135,8 +135,10 @@ def logout(request):
 def dashboard(request):
     orders = Order.objects.filter(user_id=request.user.id, is_ordered=True).order_by('created_at')
     orders_count = orders.count()
+    userprofile = UserProfile.objects.get(user_id=request.user.id)
     context = {
         'ordered_count': orders_count,
+        'userprofile': userprofile,
     }
 
     return render(request, 'dashboard/dashboard.html', context)
@@ -162,17 +164,22 @@ def activate(request, uidb64, token):
     
 def edit_profile(request):
     userprofile = get_object_or_404(UserProfile, user=request.user)
+
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        profile_form = UserProfileForm(request.POST, request.FILES, instance=userprofile )
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
+
         if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
+            user_form.save()  # Save user data
+            profile = profile_form.save(commit=False)  # Don't save yet, to set userprofile manually
+            profile.user = request.user  # Set userprofile manually
+            profile.save()  # Save userprofile
             messages.success(request, 'Your Profile has been updated')
             return redirect('edit_profile')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = UserProfileForm(instance=userprofile)
+
     context = {
         'user_form': user_form,
         'profile_form': profile_form,

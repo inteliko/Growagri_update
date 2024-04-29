@@ -54,8 +54,13 @@
                           <div class="card py-3" style="">
                             <div class="d-flex justify-content-center">
                                 <!-- User Image -->
-                                <img src="https://www.w3schools.com/howto/img_avatar.png" height="50" width="50" style="border-radius: 50%;" alt="User Profile Image">
-                            </div>
+                                {% if userprofile.profile_picture %}
+                                <img src="{{ userprofile.profile_picture.url }}" height="50" width="50" style="border-radius: 50%;" alt="User Profile Image">
+                            {% else %}
+                                <!-- If profile picture is not available, display a placeholder or default image -->
+                                <img src="{% static 'path/to/placeholder/image.jpg' %}" height="50" width="50" style="border-radius: 50%;" alt="Placeholder Image">
+                            {% endif %}
+                                          </div>
                             <div class="card-body">
                                 <!-- Full Name -->
                                 <h5 class="card-title text-center">{{user.first_name}}</h5>

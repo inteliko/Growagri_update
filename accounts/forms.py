@@ -60,6 +60,9 @@ class UserProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('address_line_1', 'address_line_2', 'profile_picture', 'nid_picture', 'nid_number', 'dob', 'gender', 'nomine_name', 'nomine_relation', 'nomine_phone', 'nomine_nid_picture', 'nomine_nid_number')
 
+
+        
+
     def __init__(self, *args, **kwargs):
         super(UserProfileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
