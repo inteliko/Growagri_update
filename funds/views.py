@@ -6,6 +6,8 @@ from .models import Order, Payment, OrderProduct
 from farm.models import Farm
 import datetime
 import json
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -51,6 +53,22 @@ def payments(request):
         product.save()
 
     CartItem.objects.filter(user=request.user).delete()
+
+    #send email 
+
+    mail_subject = 'Thank you form your funding'
+    message = render_to_string('funds/fund_recived_email.html', {
+        'user': request.user,
+        'order': order,
+        
+    })
+
+    to_email = request.user.email
+    send_email = EmailMessage(mail_subject, message, to=[to_email])
+    send_email.send()
+
+
+
 
 
 

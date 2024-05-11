@@ -83,13 +83,14 @@ class UserProfile(models.Model):
     profile_picture = models.ImageField(blank=True, upload_to="userprofile/")
     nid_picture = models.ImageField(blank=True, upload_to="nidpicture/")
     nid_number = models.CharField(blank=True, max_length=100)
-    dob = models.DateTimeField()
-    GENDER_CHOICE = [
+    dob = models.DateTimeField(null=True, blank=True)
+    GENDER_CHOICES = [
         ('male', 'Male'),
         ('female', 'Female'),
         ('other', 'Other'),
     ]
-    gender = models.CharField(choices=GENDER_CHOICE, max_length=10)
+    gender = models.CharField(null=True, blank=True, choices=GENDER_CHOICES, max_length=10)
+
 
     nomine_name = models.CharField(blank=True, max_length=50)
     nomine_relation = models.CharField(blank=True, max_length=50)
